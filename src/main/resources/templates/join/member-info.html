@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>회원정보</title>
+</head>
+<body style="text-align:center">
+<h1>환영합니다</h1>
+<div style="text-align:center; display:inline-block">
+  <table>
+    <tr>
+      <td>이름</td>
+      <td th:text="${member.name}"></td>
+    </tr>
+    <tr>
+      <td>나이</td>
+      <td th:text="${member.age}"></td>
+    </tr>
+    <tr>
+      <td>등록일</td>
+      <td th:text="${member.rgDate}"></td>
+    </tr>
+    <tr>
+      <td>학년</td>
+      <td th:text="${member.grade}"></td>
+    </tr>
+    <tr>
+      <td>성별</td>
+      <td th:text="${member.gender}"></td>
+      </td>
+    </tr>
+    <tr>
+      <td>전화번호</td>
+      <td th:text="${member.tell}"></td>
+    </tr>
+    <tr>
+      <td>주소</td>
+      <td th:text="${member.address}"></td>
+    </tr>
+  </table>
+</div>
+
+<div style="margin-top: 20px;">
+  <span style="margin:20px;"> <a href="/join/login">로그인 하기</a> </span>
+  <span style="margin:20px;"> <a href="/">홈으로</a> </span>
+</div>
+
+</body>
+</html>

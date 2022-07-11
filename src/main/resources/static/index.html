@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/index.css">
+    <script src="/index.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <title>index</title>
+</head>
+<body>
+
+<section class="password-section">
+    <div class="dotPad">
+    </div>
+    <p class="resultString" style="text-align:center;">
+    </p>
+    <div class="numberPad">
+        <form method="post">
+            <table align="center">
+                <tr>
+                    <td>
+                        <button id="button1" value="1">1</button>
+                        <button id="button2" value="2">2</button>
+                        <button id="button3" value="3">3</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="button4" value="4">4</button>
+                        <button id="button5" value="5">5</button>
+                        <button id="button6" value="6">6</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="button7" value="7">7</button>
+                        <button id="button8" value="8">8</button>
+                        <button id="button9" value="9">9</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="cancel" value="cancel">취소</button>
+                        <button id="button0" value="0">0</button>
+                        <button id="submitButton" name="submit">확인</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</section>
+
+<section class="login-section">
+    <a href="/join/login">로그인</a>
+</section>
+<section class="signup-section">
+    <a href="/join/add">회원가입</a>
+</section>
+<section>
+    <a href="/join/findidorpwd">아이디/비밀번호 찾기</a>
+</section>
+</body>
+
+
+</html>

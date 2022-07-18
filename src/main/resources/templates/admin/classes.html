@@ -33,11 +33,41 @@
             allDay: arg.allDay
           })
         }
+
+        var allEvent = calendar.getEvents(); // .getEvents() 함수로 모든 이벤트를 Array 형식으로 가져온다. (FullCalendar 기능 참조)
+            var events = new Array(); // Json 데이터를 받기 위한 배열 선언
+            for (var i = 0; i < allEvent.length; i++) {
+                var obj = new Object();     // Json 을 담기 위해 Object 선언
+                // alert(allEvent[i]._def.title); // 이벤트 명칭 알람
+                obj.title = allEvent[i]._def.title; // 이벤트 명칭  ConsoleLog 로 확인 가능.
+                obj.start = allEvent[i]._instance.range.start; // 시작
+                obj.end = allEvent[i]._instance.range.end; // 끝
+
+                events.push(obj);
+            }
+            var jsondata = JSON.stringify(events);
+            console.log(jsondata);
+            saveData(jsondata);
+
+            $(function saveData(jsondata) {
+                $.ajax({
+                    url: "",
+                    method: "POST",
+                    dataType: "json",
+                    data: JSON.stringify(events),
+                    contentType: 'application/json',
+                })
+                    .done(function (result) {
+                        // alert(result);
+                    })
+                    .fail(function (request, status, error) {
+                         // alert("에러 발생" + error);
+                    });
         calendar.unselect()
       },
       eventClick: function(arg) {
         if (confirm('해당 일정을 삭제하시겠습니까?')) {
-          arg.event.remove()
+          arg.event.remove();
         }
       },
       editable: true,
@@ -46,9 +76,10 @@
       eventSources: [{
         events: function(info, successCallback, failureCallback) {
             $.ajax({
-                url : "/admin/updateclasses",
+                url : "/admin/render-classes",
                 type : "get",
                 dataType : "json",
+                data: {""}
                 success: function(data){
                    var event = [];
                    $.each(data, function(key, value){
@@ -60,12 +91,8 @@
                    });
                     successCallback(event);
                 }
-
-
             });
         }
-
-
       }]
     });
 

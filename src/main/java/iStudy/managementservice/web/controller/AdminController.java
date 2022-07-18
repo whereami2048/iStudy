@@ -2,10 +2,7 @@ package iStudy.managementservice.web.controller;
 
 import iStudy.managementservice.domain.service.MemberServiceImpl;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,8 +53,10 @@ public class AdminController {
         return "admin/questions";
     }
 
+
+    //멤버에 있는 캘린더 클래스 정보를 호출함
     @ResponseBody
-    @GetMapping("/updateclasses")
+    @GetMapping("/render-classes")
     public List updateClasses() {
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> data = new HashMap<>();
@@ -72,4 +71,11 @@ public class AdminController {
         dataList.add(data2);
         return dataList;
     }
+
+    //멤버 캘린더 수정 사항 발생 시 호출
+//    @ResponseBody
+//    @PostMapping("/update-calendar")
+//    public String updateCalendar() {
+//
+//    }
 }

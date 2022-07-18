@@ -2,10 +2,12 @@ package iStudy.managementservice.domain.model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Data
-@Getter @Setter
+@Getter
+@Setter
 public class Member {
 
     private String isAdmin = "false";
@@ -20,9 +22,10 @@ public class Member {
     private String address;
     private String rgDate;
     private String pwString;
+    private Calendar myCalendar;
 
     public Member(String id, String pw, String name, Long age, String grade, String gender, String tell,
-                  String address, String rgDate, String pwString) {
+                  String address, String rgDate, String pwString, Calendar calendar) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -33,6 +36,7 @@ public class Member {
         this.address = address;
         this.rgDate = rgDate;
         this.pwString = pwString;
+        this.myCalendar = calendar;
     }
 
 

@@ -40,6 +40,8 @@ public class LoginController {
     */
     @PostMapping("/join/login")
     public String login(@RequestParam(required = false) String isAdmin, @RequestParam String id, @RequestParam String pw) {
+        System.out.println(isAdmin);
+
         if (memberService.login(isAdmin, id, pw)) {   //아이디 비밀번호 매칭 성공 시
             System.out.println("환영합니다");
             if (isAdmin != null) {

@@ -72,6 +72,10 @@ public class AdminController {
         return dataList;
     }
 
+    @GetMapping("/page")
+    public String goPage() {
+        return "admin/page";
+    }
     //멤버 캘린더 수정 사항 발생 시 호출
 //    @ResponseBody
 //    @PostMapping("/update-calendar")

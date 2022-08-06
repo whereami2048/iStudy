@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/home/admin")
     public String goAdmin() {
-        return "/home/admin";
+        return "/admin/index";
     }
 
     @GetMapping("/home/normal")

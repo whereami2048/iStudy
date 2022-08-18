@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset='utf-8' />
     <title>수업 관리</title>
+    <th:block th:replace="/admin/layout/layout-header :: header"></th:block>
+    <!--    fullCalendar 관련 소스-->
     <link href='/fullcalendar/lib/main.css' rel='stylesheet' />
     <script src='/fullcalendar/lib/main.js'></script>
     <script src="/fullcalendar/lib/locales-all.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -63,7 +64,7 @@
                     .fail(function (request, status, error) {
                          // alert("에러 발생" + error);
                     });
-        calendar.unselect()
+        calendar.unselect();
       },
       eventClick: function(arg) {
         if (confirm('해당 일정을 삭제하시겠습니까?')) {
@@ -115,10 +116,30 @@
   }
 
 </style>
+    <title>수업 관리</title>
 </head>
-<body>
 
-<div id='calendar' style="margin-left: 40%; margin-top:2%; margin-right:5%;"></div>
+<body id="page-top">
+<div id="wrapper">
+    <div th:insert="/admin/layout/sidebar.html :: sideBar"></div>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
+        <!-- Main Content -->
+        <div id="content">
+            <div th:insert="/admin/layout/topbar.html :: topBar"></div>
+            <div class="container-fluid">
+                <!--contents 영역-->
+                <!--fullCalendar-->
+                <div id='calendar' style="margin-left: 40%; margin-top:2%; margin-right:5%;"></div>
+
+
+                <div th:replace="/admin/layout/footer.html :: footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="/admin/layout/layout-js :: js"></th:block>
 </body>
+
 </html>

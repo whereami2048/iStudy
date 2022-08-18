@@ -2,6 +2,7 @@ package iStudy.managementservice.domain.model.repository;
 
 import iStudy.managementservice.domain.model.Calendar;
 import iStudy.managementservice.domain.model.Member;
+import org.springframework.lang.NonNull;
 
 import java.util.*;
 
@@ -13,17 +14,15 @@ class MyRepository implements Repository {
 
     private MyRepository() {
         this.members = new HashMap<>();
-        members.put("123", new Member("123", "123", "김용현", 20L, "e-1", "man", "123",
-                     "123", "2022-01-01", "1234", null));
+        members.put("123", new Member("false", "123", "123", "김용현", 23L, "e-1", "진성고", "man", "123", "123", "2022-01-01", "1234", null));
         members.get("123").setIsAdmin("true");
         this.sequence = 0L;
     }
-
     @Override
-    public Member create(String id, String pw, String name, Long age, String grade, String gender,
-                         String tell, String address, String rgDate, String pwString) {
+    public Member create(String isAdmin, String id, String pw, String name, Long age, String grade, String school, String gender,
+                         String tell, String address, String rgDate, String pwString, Calendar calendar) {
 
-        Member newMember = new Member(id, pw, name, age, grade, gender, tell, address, rgDate, pwString, new Calendar());
+        Member newMember = new Member(isAdmin, id, pw, name, age, grade, school, gender, tell, address, rgDate, pwString, calendar);
         members.put(newMember.getId(), newMember);
         this.sequence++;
         return newMember;

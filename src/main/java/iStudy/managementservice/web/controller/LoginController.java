@@ -4,6 +4,8 @@ import iStudy.managementservice.domain.service.MemberServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
     private final MemberServiceImpl memberService;
@@ -39,14 +41,17 @@ public class LoginController {
         로그인 시도 시
     */
     @PostMapping("/join/login")
-    public String login(@RequestParam(required = false) String isAdmin, @RequestParam String id, @RequestParam String pw) {
+    public String login(@RequestParam(required = false) String isAdmin, @RequestParam String id,
+                        @RequestParam String pw, HttpSession session) {
         System.out.println(isAdmin);
 
         if (memberService.login(isAdmin, id, pw)) {   //아이디 비밀번호 매칭 성공 시
             System.out.println("환영합니다");
             if (isAdmin != null) {
-                if (isAdmin.equals("on"))
+                if (isAdmin.equals("on")) {
+                    session.setAttribute("username", memberService.findById(id).getName());
                     return "redirect:/home/admin";
+                }
                 else return "redirect:/home/normal";
             } else return "redirect:/home/normal";
         }else {
